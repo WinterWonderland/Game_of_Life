@@ -68,5 +68,6 @@ class GameOfLife:
         self.fig.canvas.flush_events()
 
 
-GameOfLife().run()
-input("press enter to quit")
+if __name__ == "__main__":  
+    GameOfLife().run()
+    input("press enter to quit")
