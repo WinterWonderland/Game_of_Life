@@ -39,13 +39,13 @@ class GameOfLife:
         for x in range(self.width):
             for y in range(self.height):
                 living_neighbors = self.board[y - 1 if y > 0 else self.height - 1][x - 1 if x > 0 else self.width - 1] + \
-                                   self.board[y - 1 if y > 0 else self.height - 1][x] + \
-                                   self.board[y - 1 if y > 0 else self.height - 1][x + 1 if x < self.width - 1 else 0] + \
-                                   self.board[y][x - 1 if x > 0 else self.width - 1] + \
-                                   self.board[y][x + 1 if x < self.width - 1 else 0] + \
-                                   self.board[y + 1 if y < self.height - 1 else 0][x - 1 if x > 0 else self.width - 1] + \
-                                   self.board[y + 1 if y < self.height - 1 else 0][x] + \
-                                   self.board[y + 1 if y < self.height - 1 else 0][x + 1 if x < self.width - 1 else 0]
+                    self.board[y - 1 if y > 0 else self.height - 1][x] + \
+                    self.board[y - 1 if y > 0 else self.height - 1][x + 1 if x < self.width - 1 else 0] + \
+                    self.board[y][x - 1 if x > 0 else self.width - 1] + \
+                    self.board[y][x + 1 if x < self.width - 1 else 0] + \
+                    self.board[y + 1 if y < self.height - 1 else 0][x - 1 if x > 0 else self.width - 1] + \
+                    self.board[y + 1 if y < self.height - 1 else 0][x] + \
+                    self.board[y + 1 if y < self.height - 1 else 0][x + 1 if x < self.width - 1 else 0]
                                    
                 if self.board[y][x] == 0 and living_neighbors == 3:
                     new_board[y][x] = 1
