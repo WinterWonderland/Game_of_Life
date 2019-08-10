@@ -8,19 +8,21 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 import random
+from argparse import ArgumentParser, RawTextHelpFormatter
 
 
 class GameOfLife:
-    def __init__(self):
-        self.height = 100
-        self.width = 100
-        self.interval = 0.3
+    def __init__(self, width, height, interval, seed):
+        random.seed(seed)
+        self.height = height
+        self.width = width
+        self.interval = interval
         self.epoch = 0
         
         self.board = np.zeros((self.height, self.width))
     
-        for x in range(25, 76):
-            for y in range(25, 76):
+        for x in range(int(self.width / 2 - self.width / 4), int(self.width / 2 + self.width / 4 + 1)):
+            for y in range(int(self.height / 2 - self.height / 4), int(self.height / 2 + self.height / 4 + 1)):
                 self.board[y][x] = random.choice([0, 1])   
         
         self.fig, self.ax = plt.subplots(figsize=(10, 10), num=1)
@@ -33,7 +35,6 @@ class GameOfLife:
             
     def run_step(self):
         self.epoch += 1
-        
         new_board = self.board.copy()
         
         for x in range(self.width):
@@ -69,5 +70,37 @@ class GameOfLife:
 
 
 if __name__ == "__main__":  
-    GameOfLife().run()
+    argument_parser = ArgumentParser(description="""
+Game of Life:
+    - Little python implementation of Conway's game of life.
+    - The game board will be visualized with matplotlib.
+    - See readme.md for more informations.""", 
+                                     epilog="https://github.com/WinterWonderland/Game_of_Life",
+                                     formatter_class=RawTextHelpFormatter)
+    argument_parser.add_argument("--width",
+                                 metavar="",
+                                 type=int,
+                                 default=100,
+                                 help="The width of the game board (default=100)")
+    argument_parser.add_argument("--height",
+                                 metavar="",
+                                 type=int,
+                                 default=100,
+                                 help="The width of the game board (default=100)")
+    argument_parser.add_argument("--interval",
+                                 metavar="",
+                                 type=float,
+                                 default=0.3,
+                                 help="Interval time between each step (default=0.3)")
+    argument_parser.add_argument("--seed",
+                                 metavar="",
+                                 type=int,
+                                 default=None,
+                                 help="A seed for the random number generator to get identical play boards")
+    args = argument_parser.parse_args()
+    
+    GameOfLife(width=args.width,
+               height=args.height,
+               interval=args.interval,
+               seed=args.seed).run()
     input("press enter to quit")
