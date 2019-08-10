@@ -19,8 +19,8 @@ class GameOfLife:
         
         self.board = np.zeros((self.height, self.width))
     
-        for x in range(45, 56):
-            for y in range(45, 56):
+        for x in range(25, 76):
+            for y in range(25, 76):
                 self.board[y][x] = random.choice([0, 1])   
         
         self.fig, self.ax = plt.subplots(figsize=(10, 10), num=1)
