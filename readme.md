@@ -18,7 +18,7 @@ A quarter of the fields in the middle (50x50 cells) will be filled randomly with
 
 #### Game Process
 
-A black square means this cell is alive. A black square means this cell is dead.
+A black square means this cell is alive. A white square means this cell is dead.
 
 The game runs in steps.
 At each step each tile on the game board will be analyzed and updated with following rules:
