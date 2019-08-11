@@ -21,7 +21,7 @@ A quarter of the fields in the middle (50x50 cells) will be filled randomly with
 A black square means this cell is alive. A white square means this cell is dead.
 
 The game runs in steps.
-At each step each tile on the game board will be analyzed and updated with following rules:
+At each step each cell on the game board will be analyzed and updated with following rules:
 
 * a dead cell with exactly three living neighbours will be reborn 
 * a living cell with exactly two or three living neighbours keeps alive
